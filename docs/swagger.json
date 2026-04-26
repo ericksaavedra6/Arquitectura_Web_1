@@ -1,0 +1,167 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Servicio para la gestión de productos - Maestría Arquitectura Web.",
+        "title": "API de Inventarios Erick Saavedra",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/productos": {
+            "post": {
+                "description": "Registra un producto en la base de datos usando GORM",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Crear un nuevo producto",
+                "parameters": [
+                    {
+                        "description": "Datos del producto",
+                        "name": "producto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                }
+            }
+        },
+        "/productos/{id}": {
+            "get": {
+                "description": "Consultar un producto en la base de datos usando GORM",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Consultar un  producto",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id del producto",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Eliminar un producto en la base de datos usando GORM",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Eliminar un  producto",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id del producto",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Datos del producto",
+                        "name": "producto",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Eliminar un producto en la base de datos usando GORM",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "productos"
+                ],
+                "summary": "Eliminar un  producto",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id del producto",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Producto"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "domain.Producto": {
+            "type": "object",
+            "properties": {
+                "descripcion": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "precio": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

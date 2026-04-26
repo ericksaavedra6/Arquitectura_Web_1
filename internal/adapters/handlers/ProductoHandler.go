@@ -18,7 +18,15 @@ func NewProductoHandler(service ports.ProductService) *ProductoHandler {
 	return &ProductoHandler{service: service}
 }
 
-// POST /productos
+// Create godoc
+// @Summary      Crear un nuevo producto
+// @Description  Registra un producto en la base de datos usando GORM
+// @Tags         productos
+// @Accept       json
+// @Produce      json
+// @Param        producto  body      domain.Producto  true  "Datos del producto"
+// @Success      201       {object}  domain.Producto
+// @Router       /productos [post]
 func (handler *ProductoHandler) Create(c *gin.Context) {
 	var producto domain.Producto
 	if err := c.ShouldBindJSON(&producto); err != nil {
@@ -32,7 +40,15 @@ func (handler *ProductoHandler) Create(c *gin.Context) {
 	c.JSON(http.StatusCreated, res)
 }
 
-// GET /productos/:id
+// Create godoc
+// @Summary      Consultar un  producto
+// @Description  Consultar un producto en la base de datos usando GORM
+// @Tags         productos
+// @Accept       json
+// @Produce      json
+// @Param id    path     int true   "id del producto"
+// @Success      201       {object}  domain.Producto
+// @Router       /productos/{id} [get]
 func (handler *ProductoHandler) Get(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 
@@ -43,6 +59,15 @@ func (handler *ProductoHandler) Get(c *gin.Context) {
 	c.JSON(http.StatusOK, res)
 }
 
+// Create godoc
+// @Summary      Eliminar un  producto
+// @Description  Eliminar un producto en la base de datos usando GORM
+// @Tags         productos
+// @Accept       json
+// @Produce      json
+// @Param id    path     int true   "id del producto"
+// @Success      201       {object}  domain.Producto
+// @Router       /productos/{id} [delete]
 func (handler *ProductoHandler) Delete(c *gin.Context) {
 	idStr := c.Param("id")
 	id, err := strconv.ParseUint(idStr, 10, 32)
@@ -62,6 +87,16 @@ func (handler *ProductoHandler) Delete(c *gin.Context) {
 
 }
 
+// Create godoc
+// @Summary      Eliminar un  producto
+// @Description  Eliminar un producto en la base de datos usando GORM
+// @Tags         productos
+// @Accept       json
+// @Produce      json
+// @Param id    path     int true   "id del producto"
+// @Param        producto  body      domain.Producto  true  "Datos del producto"
+// @Success      201       {object}  domain.Producto
+// @Router       /productos/{id} [put]
 func (handler *ProductoHandler) Update(c *gin.Context) {
 	// 1. Obtener ID de la URL
 	idStr := c.Param("id")
