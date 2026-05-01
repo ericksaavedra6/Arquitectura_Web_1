@@ -1,0 +1,110 @@
+basePath: /api/v1
+definitions:
+  domain.Producto:
+    properties:
+      descripcion:
+        type: string
+      id:
+        type: integer
+      nombre:
+        type: string
+      precio:
+        type: number
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Servicio para la gestión de productos - Maestría Arquitectura Web.
+  title: API de Inventarios Erick Saavedra
+  version: "1.0"
+paths:
+  /productos:
+    post:
+      consumes:
+      - application/json
+      description: Registra un producto en la base de datos usando GORM
+      parameters:
+      - description: Datos del producto
+        in: body
+        name: producto
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Producto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Producto'
+      summary: Crear un nuevo producto
+      tags:
+      - productos
+  /productos/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Eliminar un producto en la base de datos usando GORM
+      parameters:
+      - description: id del producto
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Producto'
+      summary: Eliminar un  producto
+      tags:
+      - productos
+    get:
+      consumes:
+      - application/json
+      description: Consultar un producto en la base de datos usando GORM
+      parameters:
+      - description: id del producto
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Producto'
+      summary: Consultar un  producto
+      tags:
+      - productos
+    put:
+      consumes:
+      - application/json
+      description: Eliminar un producto en la base de datos usando GORM
+      parameters:
+      - description: id del producto
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Datos del producto
+        in: body
+        name: producto
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Producto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Producto'
+      summary: Eliminar un  producto
+      tags:
+      - productos
+swagger: "2.0"
